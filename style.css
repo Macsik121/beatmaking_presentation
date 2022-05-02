@@ -15,6 +15,10 @@ body {
     font-size: 24px;
 }
 
+.question {
+    font-size: 36px;
+}
+
 .question::before {
     content: "Q.";
     color: purple;
@@ -23,6 +27,8 @@ body {
 .question::after {
     content: "?";
 }
+
+/* first slide */
 
 .main-title {
     display: flex;
@@ -45,6 +51,17 @@ body {
     overflow: hidden;
 }
 
+.slider .slide-controller {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.slider .next-slide {
+    left: 50%;
+}
+
 .slide {
     position: absolute;
     width: 100%;
@@ -62,12 +79,795 @@ body {
     transform: translateX(0);
 }
 
-/* .slide:nth-of-type(2n) {
-    transform: translateX(100%);
+.main-info {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.main-info-title {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: 1s;
+    pointer-events: none;
+    user-select: none;
+}
+
+.main-info-title.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+}
+
+.main-info-inf {
+    transform: translateX(20px);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1.15s;
+}
+
+.main-info-inf.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+}
+
+.beatmaking-pros {
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    list-style-type: decimal;
+    padding-left: 15px;
+}
+
+.beatmaking-pros-title {
+    transform: translateX(-20px) scale(1.2);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 600ms;
+    font-size: 32px;
+}
+
+.beatmaking-pros-title.active {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+}
+
+.beatmaking-pros-item {
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 700ms;
+    margin-top: 50px;
+}
+
+.beatmaking-pros .beatmaking-pros-item.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateX(0) translateY(0);
+}
+
+.beatmaking-pros-item:nth-of-type(2n + 1) {
+    transform: translateX(-60px) translateY(100px);
+}
+
+.beatmaking-pros-item:nth-of-type(2n) {
+    transform: translateX(40px) translateY(75px);
+}
+
+/* slide 2 */
+
+.beatmaking-definition-parts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.beatmaking-definition-parts .beatmaking-definition-part {
+    width: 75%;
+    line-height: 32px;
+    transform: translateY(15px);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+}
+
+.beatmaking-definition-parts .beatmaking-definition-part.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateY(0);
+}
+
+.beatmaking-definition-parts .beatmaking-definition-part + .beatmaking-definition-part {
+    margin-top: 15px;
+}
+
+.beatmaking-definition-parts .beatmaking-definition-part:nth-of-type(2n) {
+    margin-left: auto;
+    text-align: right;
+}
+
+.beatmaking-def .question-wrap:nth-of-type(1) .question {
+    transform: translateX(-10px);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+}
+
+.beatmaking-def .question-wrap:nth-of-type(1) .question.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+}
+
+.beatmaking-def .question-wrap:nth-of-type(2) .question {
+    margin-top: 15px;
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(-10px);
+    transition: 1500ms;
+}
+
+.beatmaking-def .question-wrap:nth-of-type(2) .question.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateX(0);
+}
+
+.beatmaking-def .beat-two-parts {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 15px;
+    transform: translateX(20px);
+    transition: 1s;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.beatmaking-def .beat-two-parts.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+}
+
+.beatmaking-def .question-wrap:nth-of-type(2) {
+    margin-top: 15px;
+}
+
+.beat-parts {
+    width: 85%;
+    margin: 0 auto;
+    list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+}
+
+.beatmaking-def.slide .beat-parts .beat-part {
+    width: 50%;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+    margin-top: 25px;
+}
+
+.beatmaking-def.slide .beat-parts .beat-part.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateX(0) translateY(0);
+}
+
+.beat-parts .beat-part:nth-of-type(1) {
+    transform: translateX(-15px);
+}
+
+.beat-parts .beat-part:nth-of-type(2) {
+    transform: translateY(-25px);
+}
+
+.beatmaking-def.slide .beat-parts .beat-part + .beat-part {
+    margin-top: 15px;
+}
+
+.beatmaking-def.slide .beat-parts .beat-part .beat-part-title {
+    font-size: 24px;
+}
+
+.beat-part .beat-part-desc {
+    text-align: right;
+    width: 50%;
+    margin-left: auto;
+    display: block;
+    margin-right: 35px;
+    line-height: 32px;
+}
+
+.beat-parts .beat-part:nth-of-type(2n) {
+    margin-left: auto;
+}
+
+/* slide 3 */
+
+.melody-equation {
+    display: flex;
+}
+
+.melody-def-start {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.melody-equation .melody-equation-melody {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 500ms;
+    transform: translateX(-10px) translateY(-15px) scale(1.25);
+}
+
+.melody-equation .melody-equation-melody.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+.melody-equation .melody-equation-drums {
+    /* animation: drumsEquation 1s linear; */
+    transform: translateX(40px) translateY(-40px) scale(1.35);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 400ms;
+    transform: translateY(25px) scale(1.2);
+}
+
+.melody-equation .melody-equation-drums.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    animation: drumsEquation 600ms linear;
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+/* @keyframes drumsEquation {
+    0% {
+        transform: translateX(40px) translateY(-40px) scale(1.35);
+        opacity: 0;
+    } 50% {
+        transform: translateX(10px) translateY(0);
+        opacity: 1;
+    } 100% {
+        transform: translateX(0) translateY(0);
+        transition: 1s;
+    }
 } */
 
-.hi-hat-drums {
-    position: absolute;
-    top: -100vh;
-    left: 0;
+.melody-equation .melody-equation-result {
+    font-weight: 400;
+    font-size: 36px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 700ms;
+    transform: translateX(15px) translateY(-20px) scale(1.5);
+}
+
+.melody-equation .melody-equation-result.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+.melody-def-start .def-start {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+}
+
+.melody-def-start .def-start:nth-of-type(1) {
+    transform: translateY(-15px);
+}
+
+.melody-def-start .def-start:nth-of-type(2) {
+    transform: translateY(-15px) scale(1.1);
+    transition: 700ms;
+}
+
+.melody-def-start .def-start.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateY(0) scale(1);
+}
+
+.melody-definition {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 15px auto 0;
+}
+
+.melody-definition .melody {
+    text-align: center;
+    transform: translateX(-15px);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.melody-definition .melody.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.melody-definition .melody-definition-parts {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: .9em;
+}
+
+.melody-definition .melody-definition-parts .melody-definition-part {
+    width: 50%;
+    line-height: 36px;
+    margin-top: 15px;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+    transform: translateY(-15px);
+}
+
+.melody-definition .melody-definition-parts .melody-definition-part.active {
+    transform: translateY(0);
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+}
+
+/* .melody-definition .melody-definition-parts .melody-definition-part + .melody-definition-part {
+    margin-top: 10px;
+} */
+
+.melody-definition .melody-definition-parts .melody-definition-part:nth-of-type(2n + 1) {
+    text-align: right;
+    margin-left: auto;
+}
+
+.melody-definition .melody-definition-parts .melody-definition-part:nth-of-type(2n) {
+    text-align: left;
+}
+
+/* .melody-definition .melody-definition-parts .melody-definition-part:nth-of-type(2n + 1).active {
+    transform: translateX(15px);
+}
+
+.melody-definition .melody-definition-parts .melody-definition-part:nth-of-type(2n).active {
+    transform: translateX(-15px);
+} */
+
+.melody-role {
+    margin-top: 10vh;
+    line-height: 36px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+    pointer-events: none;
+    user-select: none;
+}
+
+.melody-role.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.melody-role::first-letter {
+    margin-left: 40px;
+}
+
+/* slide 4 */
+
+.drums-definition-title {
+    text-align: center;
+    font-size: 40px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transform: scale(1.3) translateX(-15px);
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+}
+
+.drums-definition-title.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: scale(1) translateX(0);
+}
+
+.drums-definition-title .drums-title-item {
+    opacity: 0;
+    transform: translateX(-25px);
+    display: block;
+}
+
+.drums-definition-title .drums-title-item.active {
+    opacity: 1;
+    animation: drumsDefinitionTitle 600ms linear;
+    pointer-events: all;
+    user-select: text;
+    transform: translateX(0px);
+}
+
+@keyframes drumsDefinitionTitle {
+    0% {
+        transform: translateX(-25px);
+        opacity: 0;
+    } 50% {
+        transform: translateX(25px);
+        opacity: .5;
+    } 100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.drums-definition {
+    margin: 25px auto 0;
+    width: 85%;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(15px);
+    transition: 1.7s;
+}
+
+.drums-definition.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateX(0);
+}
+
+.drum-sounds-examples {
+    margin-top: 10vh;
+    margin-left: 5px;
+    font-size: 36px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transform: translateX(-15px);
+    transition: 1s;
+}
+
+.drum-sounds-examples.active {
+    opacity: 1;
+    transform: translateX(0);
+    user-select: text;
+    pointer-events: all;
+}
+
+.drums-def .drum-sounds {
+    padding-left: 25px;
+    list-style-type: decimal;
+    margin-top: 15px;
+    width: 85%;
+    margin: 5vh auto 0;
+}
+
+.drums-def .drum-sounds .drum-sound {
+    width: 50%;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transform: translateX(-50px);
+    transition: 1s;
+}
+
+.drums-def .drum-sounds .drum-sound.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.drums-def .drum-sounds .drum-sound.highlighted {
+    animation: drumSoundHighlight 100ms linear;
+}
+
+@keyframes drumSoundHighlight {
+    0% {
+        transform: scale(1);
+    } 5% {
+        transform: scale(1.3) translateX(15%);
+        color: #00e64d;
+    } 70% {
+        transform: scale(1);
+        color: inherit;
+    }
+}
+
+.drums-sounds-examples {
+    margin-top: 15px;
+}
+
+/* slide 5 */
+
+.examples .examples-title {
+    text-align: center;
+    font-size: 40px;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-15px) rotate(-360deg) scale(1.5);
+    transition: 1s;
+}
+
+.examples .examples-title.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: none;
+    transform: translateY(0) rotate(0) scale(1);
+}
+
+.examples .examples-description {
+    width: 75%;
+    margin: 15px auto 0;
+    text-align: center;
+    transform: scale(0.5);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: 700ms;
+}
+
+.examples .examples-description.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateX(0) scale(1);
+}
+
+/* slide 6 */
+
+.star-beatmakers-title {
+    text-align: center;
+    font-size: 42px;
+    transform: translateX(15px) translateY(20px);
+    transition: 1s;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+.star-beatmakers-title.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateX(0) translateY(0);
+}
+
+.star-beatmaker-title {
+    display: flex;
+    justify-content: center;
+    /* width: 50%;
+    margin: 0 auto; */
+    font-weight: inherit;
+}
+
+.star-beatmaker-full-name {
+    font-weight: 600;
+    letter-spacing: 8px;
+}
+
+.star-beatmaker-title .star-beatmaker-pseudo {
+    font-weight: 400;
+}
+
+.star-beatmaker-nick-mira-title {
+    font-size: 40px;
+    transform: scale(0);
+    transition: 600ms;
+}
+
+.star-beatmaker-nick-mira-title.active {
+    transform: scale(1);
+}
+
+.star-beatmaker-nick-mira .description {
+    transform: translateX(-15px);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 1200ms;
+}
+
+.star-beatmaker-nick-mira .description.active {
+    transform: translateX(0);
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+}
+
+.star-beatmaker .description {
+    max-width: 35%;
+    margin-top: 20px;
+    line-height: 40px;
+    font-size: 30px;
+    transform: translateX(15px);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.star-beatmaker .description.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateX(0);
+}
+
+.star-beatmaker .income {
+    max-width: 50%;
+    margin-left: auto;
+    font-size: 28px;
+    text-align: right;
+    margin-top: 25px;
+    transform: translateY(20px);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.star-beatmaker .income.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.star-beatmaker .income .royalties {
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 3px;
+}
+
+.star-beatmaker .juice-wrld-label {
+    color: #808080;
+    animation: animateJuiceWrldLabel 10s alternate infinite;
+    /* transform: translateX(0); */
+    pointer-events: none;
+    user-select: none;
+    display: block;
+    margin-top: 15vh;
+}
+
+@keyframes animateJuiceWrldLabel {
+    0% {
+        transform: translateX(0);
+        /* opacity: 1; */
+    } 100% {
+        /* 100% - the labels' width */
+        transform: translateX(calc(100% - 152px));
+        /* opacity: 0; */
+    }
+    /* 100% {
+        transform: translateX(0)
+    } */
+}
+
+.star-beatmaker .juice-wrld-production {
+    margin-top: 2vh;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: 1s;
+    user-select: none;
+    pointer-events: none;
+    transform: scale(1.2);
+}
+
+.star-beatmaker .juice-wrld-production.active {
+    user-select: text;
+    pointer-events: all;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* slide 7 */
+
+.juice-wrld-name {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 4em;
+    font-weight: 900;
+}
+
+.juice-wrld-track-desc {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.top-tracks {
+    margin-top: 3vh;
+    list-style-type: decimal;
+    padding-left: 25px;
+}
+
+.top-tracks-title {
+    font-size: 1.5em;
+}
+
+.top-tracks .top-track {
+    margin-top: 15px;
+}
+
+.top-tracks .top-track-title {
+    font-weight: 600;
+}
+
+.juice-wrld-tracks-fact {
+    margin-top: 25px;
+    text-align: right;
+    width: 60%;
+    margin-left: auto;
+    line-height: 36px;
+}
+
+/* eighth slide and the latest */
+
+.conclusion-title {
+    text-align: center;
+    color: rgba(255, 255, 255);
+    font-size: 2em;
+    line-height: 2em;
+}
+
+.conclusion-text {
+    width: 85%;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 5vh auto 0;
+    line-height: 1.4em;
+}
+
+.conclusion-text .conclusion-text-item {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 1s;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+.conclusion-text .conclusion-text-item.active {
+    opacity: 1;
+    user-select: text;
+    pointer-events: all;
+    transform: translateY(0);
 }
