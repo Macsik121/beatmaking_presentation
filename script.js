@@ -113,6 +113,9 @@ window.onkeydown = function(e) {
         prevSlide(currentSlide);
     }
 }
+window.onmousedown = function(e) {
+    nextSlide(currentSlide);
+}
 
 function slideHomeLogic() {
     const title = document.querySelector(".main-title");
