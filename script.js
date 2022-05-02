@@ -352,7 +352,7 @@ function slideExamplesLogic() {
     const examplesTitle = querySelector(".examples-title");
     const examplesDescription = querySelector(".examples-description");
     const examplesTitleDuration = 100;
-    const examplesDescriptionDuration = examplesTitleDuration + 1000;
+    const examplesDescriptionDuration = examplesTitleDuration + 700;
     if (examplesTitle) {
         setTimeout(() => {
             enableElement(examplesTitle);
@@ -376,7 +376,7 @@ function starBeatmakersLogic() {
     const starBeatmakerTitleDuration = starBeatmakersTitleDuration + 200;
     const starBeatmakerDescDuration = starBeatmakerTitleDuration + 500;
     const starBeatmakerIncomeDuration = starBeatmakerDescDuration + 200;
-    const nickMiraJuiceWRLDProductionDuration = starBeatmakerIncomeDuration + 450;
+    const nickMiraJuiceWRLDProductionDuration = starBeatmakerIncomeDuration + 200;
     setTimeout(() => {
         if (starBeatmakersTitle) {
             setTimeout(() => {
@@ -403,10 +403,55 @@ function starBeatmakersLogic() {
                 enableElement(nickJuiceWRLDProduction);
             }, nickMiraJuiceWRLDProductionDuration)
         }
-    }, 1000);
+    }, 100);
     slidesLogic.push(starBeatmakersLogic);
 }
 function JuiceWrldSlideLogic() {
+    const querySelector = QuerySelectorManager.createQuerySelector(".juice-wrld.slide");
+
+    const JuiceWrldName = querySelector(".juice-wrld-name");
+    if (JuiceWrldName) {
+        const juiceWrldTracksDesc = querySelector(".juice-wrld-track-desc");
+        const topTracksTitle = querySelector(".top-tracks-title");
+        const juiceWrldTopTracks = querySelector(".top-tracks .top-track", { all: true });
+        const juiceWrldTopTracksStreams = querySelector(".top-tracks .top-track .top-track-streams", { all: true });
+        const juiceWrldFact = querySelector(".juice-wrld-tracks-fact");
+
+        const juiceWrldNameDuration = 200;
+        // 2500 / 2 - animation duration of juice wrld name.
+        // divided by 2 since the latest animation step is 51%
+        const juiceWrldTracksDescDuration = juiceWrldNameDuration + (2500 / 2 - 150) + 300;
+        const juiceWrldTopTracksTitleDuration = juiceWrldTracksDescDuration + 300;
+        const topTrackDuration = 150;
+        const topTrackStreamsDuration = 150;
+        const juiceWrldTopTracksDuration = juiceWrldTopTracksTitleDuration + (topTrackDuration * juiceWrldTopTracks.length);
+        const juiceWrldTopTracksStreamsDuration = juiceWrldTopTracksDuration + (topTrackStreamsDuration * juiceWrldTopTracksStreams.length);
+        const juiceWrldFactDuration = juiceWrldTopTracksTitleDuration + (topTrackDuration * juiceWrldTopTracks.length) + 300;
+        setTimeout(() => {
+            enableElement(JuiceWrldName);
+        }, juiceWrldNameDuration);
+        setTimeout(() => {
+            enableElement(juiceWrldTracksDesc);
+        }, juiceWrldTracksDescDuration);
+        setTimeout(() => {
+            enableElement(topTracksTitle);
+            juiceWrldTopTracks.forEach((topTrack, i) => {
+                setTimeout(() => {
+                    enableElement(topTrack);
+                }, topTrackDuration * (i + 1));
+            });
+            setTimeout(() => {
+                juiceWrldTopTracksStreams.forEach((stream, i) => {
+                    setTimeout(() => {
+                        enableElement(stream);
+                    }, topTrackStreamsDuration * (i + 1));
+                });
+            }, topTrackDuration);
+        }, juiceWrldTopTracksTitleDuration);
+        setTimeout(() => {
+            enableElement(juiceWrldFact);
+        }, juiceWrldFactDuration);
+    }
     slidesLogic.push(JuiceWrldSlideLogic);
 }
 function conclusionSlideLogic() {
@@ -452,20 +497,3 @@ slideExamplesLogic();
 starBeatmakersLogic();
 JuiceWrldSlideLogic();
 conclusionSlideLogic();
-
-// const slidesLogicManager = new SliderLogic();
-// // home slide is the first
-// slidesLogicManager.addLogic(slideHomeLogic, 1);
-// slidesLogicManager.addLogic(beatmakingDefinitionLogic, 2);
-// slidesLogicManager.addLogic(melodyDefLogic, 3);
-// slidesLogicManager.addLogic(drumsDefLogic, 4);
-// // examples of drums is fifth
-// slidesLogicManager.addLogic(slideExamplesLogic, 5);
-// slidesLogicManager.addLogic(starBeatmakersLogic, 6);
-// slidesLogicManager.addLogic(JuiceWrldSlideLogic, 7);
-// slidesLogicManager.addLogic(conclusionSlideLogic, 8);
-
-// const nextSlideController = document.querySelector(".slider .next-slide");
-// const prevSlideController = document.querySelector(".slider .prev-slide");
-// nextSlideController.onclick = nextSlide(currentSlide);
-// prevSlideController.onclick = prevSlide(currentSlide);
