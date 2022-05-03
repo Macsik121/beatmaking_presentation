@@ -372,38 +372,36 @@ function starBeatmakersLogic() {
     const starBeatmakerDesc = querySelector(".star-beatmaker .description");
     const starBeatmakerIncome = querySelector(".star-beatmaker .income");
     const nickJuiceWRLDProduction = querySelector(".star-beatmaker .juice-wrld-production");
-    const starBeatmakersTitleDuration = 300;
+    const starBeatmakersTitleDuration = 200;
     const starBeatmakerTitleDuration = starBeatmakersTitleDuration + 200;
     const starBeatmakerDescDuration = starBeatmakerTitleDuration + 500;
     const starBeatmakerIncomeDuration = starBeatmakerDescDuration + 200;
     const nickMiraJuiceWRLDProductionDuration = starBeatmakerIncomeDuration + 200;
-    setTimeout(() => {
-        if (starBeatmakersTitle) {
-            setTimeout(() => {
-                enableElement(starBeatmakersTitle);
-            }, starBeatmakersTitleDuration);
-        }
-        if (starBeatmakerTitle) {
-            setTimeout(() => {
-                enableElement(starBeatmakerTitle);
-            }, starBeatmakerTitleDuration);
-        }
-        if (starBeatmakerDesc) {
-            setTimeout(() => {
-                enableElement(starBeatmakerDesc);
-            }, starBeatmakerDescDuration);
-        }
-        if (starBeatmakerIncome) {
-            setTimeout(() => {
-                enableElement(starBeatmakerIncome);
-            }, starBeatmakerIncomeDuration);
-        }
-        if (nickJuiceWRLDProduction) {
-            setTimeout(() => {
-                enableElement(nickJuiceWRLDProduction);
-            }, nickMiraJuiceWRLDProductionDuration)
-        }
-    }, 100);
+    if (starBeatmakersTitle) {
+        setTimeout(() => {
+            enableElement(starBeatmakersTitle);
+        }, starBeatmakersTitleDuration);
+    }
+    if (starBeatmakerTitle) {
+        setTimeout(() => {
+            enableElement(starBeatmakerTitle);
+        }, starBeatmakerTitleDuration);
+    }
+    if (starBeatmakerDesc) {
+        setTimeout(() => {
+            enableElement(starBeatmakerDesc);
+        }, starBeatmakerDescDuration);
+    }
+    if (starBeatmakerIncome) {
+        setTimeout(() => {
+            enableElement(starBeatmakerIncome);
+        }, starBeatmakerIncomeDuration);
+    }
+    if (nickJuiceWRLDProduction) {
+        setTimeout(() => {
+            enableElement(nickJuiceWRLDProduction);
+        }, nickMiraJuiceWRLDProductionDuration)
+    }
     slidesLogic.push(starBeatmakersLogic);
 }
 function JuiceWrldSlideLogic() {

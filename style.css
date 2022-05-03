@@ -87,10 +87,17 @@ body {
     /* background-image: linear-gradient(90deg, #1C1C24, #fff); */
     background-color: #1C1C24;
     padding: 15px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .slider .slide.active {
     transform: translateX(0);
+}
+
+.home {
+    background-image: url("./images/bgs/beatmaking.jpg");
 }
 
 .main-info {
@@ -212,6 +219,10 @@ body {
     text-align: right;
 }
 
+.beatmaking-def.slide {
+    background-image: url("./images/bgs/producer_studio.jpg");
+}
+
 .beatmaking-def .question-wrap:nth-of-type(1) .question {
     transform: translateX(-10px);
     opacity: 0;
@@ -321,6 +332,10 @@ body {
 
 /* slide 3 */
 
+.melody-def {
+    background-image: url("./images/bgs/melody.jpg");
+}
+
 .melody-equation {
     display: flex;
 }
@@ -420,7 +435,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 15px auto 0;
+    margin: 5vh auto 0;
+    font-size: 1.3em;
 }
 
 .melody-definition .melody {
@@ -430,6 +446,8 @@ body {
     user-select: none;
     pointer-events: none;
     transition: 1s;
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .melody-definition .melody.active {
@@ -503,6 +521,10 @@ body {
 }
 
 /* slide 4 */
+
+.drums-def {
+    background-image: url("./images/bgs/drums.jpg");
+}
 
 .drums-definition-title {
     text-align: center;
@@ -669,6 +691,11 @@ body {
 
 /* slide 6 */
 
+.star-beatmakers {
+    background-image: url("./images/bgs/Nick_Mira.jpg");
+    color: #000;
+}
+
 .star-beatmakers-title {
     text-align: center;
     font-size: 42px;
@@ -730,7 +757,7 @@ body {
 
 .star-beatmaker .description {
     max-width: 35%;
-    margin-top: 20px;
+    margin-top: 5vh;
     line-height: 40px;
     font-size: 30px;
     transform: translateX(15px);
@@ -758,6 +785,7 @@ body {
     user-select: none;
     pointer-events: none;
     transition: 1s;
+    color: #fff;
 }
 
 .star-beatmaker .income.active {
@@ -803,6 +831,7 @@ body {
     user-select: none;
     pointer-events: none;
     transform: scale(1.2);
+    color: #fff;
 }
 
 .star-beatmaker .juice-wrld-production.active {
@@ -813,6 +842,11 @@ body {
 }
 
 /* slide 7 */
+
+.juice-wrld.slide {
+    background-image: url("./images/bgs/Goodbye_&_Good_Riddance.jpg");
+    color: #000;
+}
 
 .juice-wrld-name {
     text-transform: uppercase;
@@ -925,6 +959,10 @@ body {
 }
 
 /* eighth slide and the latest */
+
+.conclusion {
+    background-image: url("./images/bgs/conclusion.jpg");
+}
 
 .conclusion-title {
     text-align: center;
