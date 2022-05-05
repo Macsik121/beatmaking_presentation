@@ -6,6 +6,9 @@ async function playAudio(audio = new Audio()) {
         await audioFile.play();
         audioFile.classList.add("audio");
         document.querySelector(".slider").insertAdjacentElement("afterend", audioFile);
+        audioFile.onended = function() {
+            audioFile.remove();
+        }
     } else {
         audio.play();
     }
@@ -126,7 +129,7 @@ function slideHomeLogic() {
     });
     const titleItems = document.querySelectorAll(".main-title .main-title-item");
     const titleItemsDuration = 100 * titleItems.length;
-    const beatmakingProsDuration = titleItemsDuration + 300 + 300;
+    const beatmakingProsDuration = titleItemsDuration + 300 + 450;
     titleItems.forEach((item, i) => {
         setTimeout(() => {
             enableElement(item);
@@ -139,7 +142,7 @@ function slideHomeLogic() {
         // just independing time duration
         setTimeout(() => {
             enableElement(mainInfoInf);
-        }, 150);
+        }, 300);
     }, titleItemsDuration);
     const beatmakingProsTitle = document.querySelector(".beatmaking-pros .beatmaking-pros-title");
     const beatmakingProsItems = document.querySelectorAll(".beatmaking-pros .beatmaking-pros-item");
@@ -158,6 +161,17 @@ function slideHomeLogic() {
 function beatmakingDefinitionLogic() {
     const querySelector = QuerySelectorManager.createQuerySelector(".beatmaking-def");
     const question = querySelector(".question-wrap:nth-of-type(1) .question");
+    const beatmakingDefinitionParts = querySelector(".beatmaking-definition-parts");
+    if (beatmakingDefinitionParts && beatmakingDefinitionParts.textContent) {
+        const divider = " ";
+        const definition = beatmakingDefinitionParts.textContent.trim();
+        beatmakingDefinitionParts.innerHTML = "";
+        const splitDef = definition.split(divider);
+        const firstHalf = splitDef.slice(0, splitDef.length / 2).join(" ");
+        const secondHalf = splitDef.slice(splitDef.length / 2, splitDef.length).join(" ");
+        beatmakingDefinitionParts.innerHTML += `<span class="first-half beatmaking-definition-part">${firstHalf}</span>`;
+        beatmakingDefinitionParts.innerHTML += `<span class="second-half beatmaking-definition-part">${secondHalf}</span>`;
+    }
     const firstDefHalf = querySelector(".beatmaking-definition-parts .first-half");
     const secondDefHalf = querySelector(".beatmaking-definition-parts .second-half");
     const question2 = querySelector(".question-wrap:nth-of-type(2) .question");
@@ -197,6 +211,18 @@ function beatmakingDefinitionLogic() {
 }
 function melodyDefLogic() {
     const querySelector = QuerySelectorManager.createQuerySelector(".melody-def");
+    const melodyDefinitionPartsWrap = querySelector(".melody-definition .melody-definition-parts");
+    if (melodyDefinitionPartsWrap) {
+        const splitContent = melodyDefinitionPartsWrap.childNodes[0].textContent.trim().split(" ");
+        melodyDefinitionPartsWrap.innerHTML = "";
+        console.log(splitContent)
+        const firstHalf = splitContent.slice(0, (splitContent.length / 2 + 1)).join(" ");
+        console.log(firstHalf)
+        const secondHalf = splitContent.slice((splitContent.length / 2 + 1), splitContent.length).join(" ");
+        console.log(secondHalf)
+        melodyDefinitionPartsWrap.innerHTML += `<span class="melody-definition-part first-half">${firstHalf}</span>`;
+        melodyDefinitionPartsWrap.innerHTML += `<span class="melody-definition-part second-half">${secondHalf}</span>`;
+    }
     const melodyInEquation = querySelector(".melody-equation .melody-equation-melody");
     const drumsInEquation = querySelector(".melody-equation .melody-equation-drums");
     const equationResult = querySelector(".melody-equation .melody-equation-result");
@@ -244,16 +270,21 @@ function melodyDefLogic() {
 }
 function drumsDefLogic() {
     const querySelector = QuerySelectorManager.createQuerySelector(".drums-def");
-    function querySelectorDrumSound(drumSelector = "") {
-        const result = querySelector(".drum-sounds .drum-sound." + drumSelector);
-        return result;
-    }
     const drumsTitle = querySelector(".drums-definition-title");
+    const drumsDescription = querySelector(".drums-description");
+    const drumsDescriptionTranscription = querySelector(".drums-transcription");
     const drumsDefinition = querySelector(".drums-definition");
     const drumSoundsExamples = querySelector(".drum-sounds-examples");
-    let drumsTitleDuration = null;
+    const definition808 = querySelector(".definition-808");
     const drumSounds = querySelector(".drum-sounds .drum-sound", { all: true });
     if (drumsTitle) {
+        const drumsTitleDuration = 200;
+        const drumsTranscriptionDuration = drumsTitleDuration + 1000;
+        const drumsDescriptionDuration = drumsTranscriptionDuration + 300;
+        const drumsDefinitionDuration = drumsDescriptionDuration + 300;
+        const drumSoundsExamplesDuration = drumsDescriptionDuration + 600;
+        const drumSoundsDuration = drumSoundsExamplesDuration;
+        const definition808Duration = drumSoundsDuration + 1000;
         const drumsTitleContent = drumsTitle.textContent.split("");
         drumsTitle.innerHTML = "";
         drumsTitleContent.forEach(item => {
@@ -266,27 +297,29 @@ function drumsDefLogic() {
                     enableElement(item);
                 }, 200 * (i));
             });
-        }, 100);
-    }
-    if (drumsDefinition) {
-        drumsTitleDuration = 100 + 200 * drumsTitle.childNodes.length;
+        }, drumsTitleDuration);
+        setTimeout(() => {
+            enableElement(drumsDescriptionTranscription)
+        }, drumsTranscriptionDuration);
         setTimeout(() => {
             enableElement(drumsDefinition);
-        }, (100 * drumsTitle.childNodes.length) + 900);
-    }
-    if (drumSoundsExamples) {
+        }, drumsDefinitionDuration);
+        setTimeout(() => {
+            enableElement(drumsDescription);
+        }, drumsDescriptionDuration);
         setTimeout(() => {
             enableElement(drumSoundsExamples)
-        }, (100 * drumsTitle.childNodes.length) + 1500);
-    }
-    if (drumSounds && drumsTitle) {
+        }, drumSoundsExamplesDuration);
         setTimeout(() => {
             drumSounds.forEach((sound, i) => {
                 setTimeout(() => {
                     enableElement(sound);
                 }, 250 * (i + 1));
             });
-        }, (100 * drumsTitle.childNodes.length) + 900 + 500);
+        }, drumSoundsDuration);
+        setTimeout(() => {
+            enableElement(definition808);
+        }, definition808Duration);
     }
     slidesLogic.push(drumsDefLogic);
 }
@@ -316,6 +349,7 @@ function slideExamplesLogic() {
             allAudios.forEach(audio => {
                 audio.pause();
                 audio.currentTime = 0;
+                audio.remove();
             });
         }
         else if (e.shiftKey && e.key === "B") {
@@ -376,7 +410,7 @@ function starBeatmakersLogic() {
     const starBeatmakerTitleDuration = starBeatmakersTitleDuration + 200;
     const starBeatmakerDescDuration = starBeatmakerTitleDuration + 500;
     const starBeatmakerIncomeDuration = starBeatmakerDescDuration + 200;
-    const nickMiraJuiceWRLDProductionDuration = starBeatmakerIncomeDuration + 200;
+    const nickMiraJuiceWRLDProductionDuration = starBeatmakerIncomeDuration + 300;
     if (starBeatmakersTitle) {
         setTimeout(() => {
             enableElement(starBeatmakersTitle);

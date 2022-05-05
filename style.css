@@ -1,3 +1,5 @@
+/* hosted site: https://macsik121.github.io/beatmaking_presentation */
+
 :root {
     box-sizing: border-box;
 }
@@ -27,6 +29,19 @@ body {
     color: #fff;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 24px;
+}
+
+.word-transcription {
+    font-weight: 400;
+    font-size: .8em;
+}
+
+.word-transcription::before {
+    content: "[";
+}
+
+.word-transcription::after {
+    content: "]";
 }
 
 .question {
@@ -98,6 +113,7 @@ body {
 
 .home {
     background-image: url("./images/bgs/beatmaking.jpg");
+    /* background-image: url("https://macsik121.github.io/beatmaking_presentation/images/bgs/beatmaking.jpg"); */
 }
 
 .main-info {
@@ -106,6 +122,7 @@ body {
     align-items: center;
     flex-direction: column;
     margin-top: 30px;
+    color: #000;
 }
 
 .main-info-title {
@@ -129,6 +146,7 @@ body {
     pointer-events: none;
     user-select: none;
     transition: 1.15s;
+    width: 40%;
 }
 
 .main-info-inf.active {
@@ -193,6 +211,11 @@ body {
     flex-direction: column;
 }
 
+.beatmaking-definition-parts .second-half {
+    /* font-size: 1.35em; */
+    text-align: center;
+}
+
 .beatmaking-definition-parts .beatmaking-definition-part {
     width: 75%;
     line-height: 32px;
@@ -221,6 +244,7 @@ body {
 
 .beatmaking-def.slide {
     background-image: url("./images/bgs/producer_studio.jpg");
+    /* background-image: url("https://macsik121.github.io/beatmaking_presentation/images/bgs/producer_studio.jpg"); */
 }
 
 .beatmaking-def .question-wrap:nth-of-type(1) .question {
@@ -334,10 +358,12 @@ body {
 
 .melody-def {
     background-image: url("./images/bgs/melody.jpg");
+    /* background-image: url("https://macsik121.github.io/images/bgs/melody.jpg"); */
 }
 
 .melody-equation {
     display: flex;
+    align-items: center;
 }
 
 .melody-def-start {
@@ -524,6 +550,49 @@ body {
 
 .drums-def {
     background-image: url("./images/bgs/drums.jpg");
+    /* background-image: url("https://macsik121.github.io/beatmaking_presentation/images/bgs/drums.jpg"); */
+}
+
+.drums-definition-title-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drums-transcription {
+    font-size: 1.2em;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: 1s;
+}
+
+.drums-transcription.active {
+    pointer-events: all;
+    user-select: text;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.drums-definition {
+    text-align: left;
+    width: 75%;
+    margin-top: 5vh;
+    font-size: 1.25em;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: 1s;
+    transform: scale(1.3);
+    padding-left: 25px;
+}
+
+.drums-definition.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: scale(1);
 }
 
 .drums-definition-title {
@@ -572,10 +641,11 @@ body {
     }
 }
 
-.drums-definition {
-    margin: 25px auto 0;
+.drums-description {
+    margin-top: 5vh;
+    margin-left: auto;
     width: 85%;
-    text-align: center;
+    text-align: right;
     opacity: 0;
     pointer-events: none;
     user-select: none;
@@ -583,7 +653,7 @@ body {
     transition: 1.7s;
 }
 
-.drums-definition.active {
+.drums-description.active {
     opacity: 1;
     pointer-events: all;
     user-select: text;
@@ -611,9 +681,13 @@ body {
 .drums-def .drum-sounds {
     padding-left: 25px;
     list-style-type: decimal;
-    margin-top: 15px;
-    width: 85%;
-    margin: 5vh auto 0;
+    /* width: 85%; */
+    /* margin: 2vh auto 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2vh;
+    margin-left: 25px;
 }
 
 .drums-def .drum-sounds .drum-sound {
@@ -650,6 +724,26 @@ body {
 
 .drums-sounds-examples {
     margin-top: 15px;
+}
+
+.definition-808 {
+    /* color: #000; */
+    text-align: right;
+    width: 60%;
+    margin-top: 10vh;
+    margin-left: auto;
+    opacity: 0;
+    transition: 1s;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-15px);
+}
+
+.definition-808.active {
+    opacity: 1;
+    pointer-events: all;
+    user-select: text;
+    transform: translateY(0);
 }
 
 /* slide 5 */
@@ -872,6 +966,7 @@ body {
     pointer-events: none;
     user-select: none;
     transition: 1s;
+    color: #fff;
 }
 
 .juice-wrld-track-desc.active {
@@ -894,6 +989,7 @@ body {
     pointer-events: none;
     user-select: none;
     transition: 1s;
+    color: #fff;
 }
 
 .top-tracks-title.active {
@@ -949,6 +1045,7 @@ body {
     user-select: none;
     transform: scale(1.3);
     transition: 500ms;
+    font-size: .95em;
 }
 
 .juice-wrld-tracks-fact.active {
